@@ -4,10 +4,11 @@
  * for more information concerning the license and the contributors participating to this project.
  */
 
-using AspNet.Security.OAuth.GitHub;
+using AspNet.Security.OAuth.NaverLine;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Mvc.Client
@@ -22,6 +23,7 @@ namespace Mvc.Client
             });
 
             services.AddMvc();
+            
         }
 
         public void Configure(IApplicationBuilder app)
@@ -36,26 +38,16 @@ namespace Mvc.Client
                 LogoutPath = new PathString("/signout")
             });
 
-            app.UseGoogleAuthentication(new GoogleOptions
+            app.UseNaverLineAuthentication(new NaverLineAuthenticationOptions()
             {
-                ClientId = "560027070069-37ldt4kfuohhu3m495hk2j4pjp92d382.apps.googleusercontent.com",
-                ClientSecret = "n2Q-GEw9RQjzcRbU3qhfTj8f"
-            });
-
-            app.UseTwitterAuthentication(new TwitterOptions
-            {
-                ConsumerKey = "6XaCTaLbMqfj6ww3zvZ5g",
-                ConsumerSecret = "Il2eFzGIrYhz6BWjYhVXBPQSfZuS4xoHpSSyD9PI"
-            });
-
-            app.UseGitHubAuthentication(new GitHubAuthenticationOptions
-            {
-                ClientId = "49e302895d8b09ea5656",
-                ClientSecret = "98f1bf028608901e9df91d64ee61536fe562064b",
-                Scope = { "user:email" }
+                ClientId = "1529044644",
+                ClientSecret = "a89e5aeefa22da6859b898ec22cb0ca4"
             });
 
             app.UseMvc();
+
+ 
+
         }
     }
 }
